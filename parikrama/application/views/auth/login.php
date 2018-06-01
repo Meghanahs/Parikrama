@@ -51,7 +51,8 @@
         <h2 class="login form-signin-heading">Parikrama</h2>
       <div id="infoMessage"><?php echo $message;?></div>
             <label>Email Address</label>
-             <input type="text" class="form-control" name="identity" placeholder="<?php echo lang('useremail'); ?>" autofocus>          
+             <input type="text" class="form-control" name="identity" placeholder="<?php echo lang('useremail'); ?>" 
+autofocus>          
             <label>Password</label>
              <input type="password" class="form-control" name="password" placeholder="<?php echo lang('password'); ?>">
           <center>   <button type="submit" >Sign In</button></center>
@@ -64,18 +65,18 @@
         </div>
         <div id="sectionB" class="tab-pane fade">
 			<div class="innter-form">
-            <form class="sa-innate-form" method="post">
+        <!--  <form class="sa-innate-form" role="form" action="auth/signup" method="post" > -->
 			  <div id="infoMessage"><?php echo $message;?></div>
-            <label>Name</label>
-            <input type="text" name="username" autofocus>
-            <label>Email Address</label>
-            <input type="text" name="username">
-			<label>Phone Number</label>
-            <input type="text" name="phone_no">
-            <label>Password</label>
-            <input type="password" name="password">
+             <label for="exampleInputEmail1"> <?php  echo lang('name'); ?></label>
+                                            <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="">
+            <label for="exampleInputEmail1"> <?php  echo lang('email'); ?></label>
+                                            <input type="text" class="form-control" name="email" id="exampleInputEmail1" placeholder="">
+             <label for="exampleInputEmail1"> <?php  echo lang('phone'); ?></label>
+                                            <input type="text" class="form-control" name="phone" id="exampleInputEmail1"  placeholder="">
+             <label for="exampleInputEmail1"><?php  echo lang('password'); ?> </label>
+                                            <input type="password" class="form-control" name="password" id="exampleInputEmail1" placeholder="">
            <center> <button type="submit">Register</button></center>
-            </form>
+       <!--      </form> ->
             </div>
         </div>
     </div>
@@ -94,7 +95,8 @@
 
                               <div class="modal-body">
                                   <p><?php echo lang('reset_message');?></p>
-                                  <input type="text" name="email" placeholder="<?php echo lang('email');?>" autocomplete="off" class="form-control placeholder-no-fix">
+                                  <input type="text" name="email" placeholder="<?php echo lang('email');?>" autocomplete="off" 
+                                    class="form-control placeholder-no-fix">
 
                               </div>
                               <div class="modal-footer">

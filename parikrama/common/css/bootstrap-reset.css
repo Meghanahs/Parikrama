@@ -571,8 +571,8 @@ a.logo {
 
 .panel-heading {
     border-radius: 0px;
-    background: #f9f9f9;
-    color: #334477;
+    background: teal;
+    color: #ffffff;
     /* font-family: fontawesome; */
     //  text-transform: uppercase;
     letter-spacing: 1px;
@@ -750,7 +750,7 @@ a.logo {
 }
 
 .top_box {
-    background: #00979B !important;
+    background: #F4A460 !important;
     color: #fff !important;   
 }
 

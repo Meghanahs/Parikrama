@@ -7,6 +7,8 @@ class Auth extends CI_Controller {
 		
 			parent::__construct();
 			$this->load->database();
+
+		/*	 $this->load->model('Signup_model');  */
 			
 			$this->load->library(array('ion_auth','form_validation'));
 			
@@ -101,6 +103,48 @@ echo "<script>console.log('Start index');</script>";
 			$this->_render_page('auth/login', $this->data);
 		}
 	}
+	
+	public function signup() {
+		 $teacherDetails=array(          
+                    'username' =>   $this->input->post('username'),
+                    'email' =>   $this->input->post('email'),
+                    'phone'=>  $this->input->post('phone'),
+                    'password' =>   md5($this->input->post('password'))
+                    
+                    /*'created_date' => date['y-m-d H-i-s']*/
+                    );
+					 $this->db->insert("users",$teacherDetails);
+        echo "<script>console.log('teacher registered Successfully');</script>";
+		  $this->session->set_flashdata('feedback', 'Updated');
+		   redirect('auth/login', 'refresh');
+
+				/*	 $this->load->model('Signup_model');  
+					 $this->Signup_model->createTeacher($teacherDetails); */
+             /*$this->user_model->recruiterMail($this->input->post('name'),$this->input->post('email'),$reg);*/		
+	}
+	
+/*
+		public function signup() {
+		 $teacherDetails=array(          
+                    'username' =>   $this->input->post('username'),
+                    'email' =>   $this->input->post('email'),
+                    'phone'=>  $this->input->post('phone'),
+                    'password' =>   md5($this->input->post('password'))
+                    );
+					
+				 $this->load->model('Signup_model');  
+			     $this->Signup_model->createTeacher($teacherDetails); 
+                 $this->Signup_model->mail($this->input->post('name'),$this->input->post('email'),$reg);		
+	} */
+	
+	/* verify mail    */
+	
+public function verify(){
+    
+     $this->load->model('user_model');  
+  $this->Signup_model->verify($_GET['mail'],$_GET['reg']);
+   
+}
 
 	//log the user out
 	function logout()

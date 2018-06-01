@@ -65,16 +65,17 @@ autofocus>
         </div>
         <div id="sectionB" class="tab-pane fade">
 			<div class="innter-form">
+			  <?php echo $this->session->flashdata('feedback'); ?> 
              <form class="sa-innate-form" role="form" action="auth/signup" method="post" >
 			  <div id="infoMessage"><?php echo $message;?></div>
              <label for="exampleInputEmail1"> <?php  echo lang('name'); ?></label>
-                                            <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="">
+                                            <input type="text" class="form-control" name="username"  placeholder="">
             <label for="exampleInputEmail1"> <?php  echo lang('email'); ?></label>
-                                            <input type="text" class="form-control" name="email" id="exampleInputEmail1" placeholder="">
+                                            <input type="text" class="form-control" name="email"  placeholder="">
              <label for="exampleInputEmail1"> <?php  echo lang('phone'); ?></label>
-                                            <input type="text" class="form-control" name="phone" id="exampleInputEmail1"  placeholder="">
+                                            <input type="text" class="form-control" name="phone"   placeholder="">
              <label for="exampleInputEmail1"><?php  echo lang('password'); ?> </label>
-                                            <input type="password" class="form-control" name="password" id="exampleInputEmail1" placeholder="">
+                                            <input type="password" class="form-control" name="password"  placeholder="">
            <center> <button type="submit">Register</button></center>
             </form>
             </div>
