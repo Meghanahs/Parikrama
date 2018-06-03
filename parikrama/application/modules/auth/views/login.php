@@ -49,7 +49,8 @@
         <div class="innter-form">
         <form class="sa-innate-form" method="post" action="auth/login">
         <h2 class="login form-signin-heading">Parikrama</h2>
-      <div id="infoMessage"><?php echo $message;?></div>
+      <div id="infoMessage"><?php echo $message;?>
+	  <?php echo $this->session->flashdata('message'); ?> </div>
             <label>Email Address</label>
              <input type="text" class="form-control" name="identity" placeholder="<?php echo lang('useremail'); ?>" 
 autofocus>          

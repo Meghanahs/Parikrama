@@ -180,7 +180,7 @@ class Student extends MX_Controller {
                     $this->session->set_flashdata('feedback', 'This Email Address Is Already Registered');
                     redirect('student/addNewView');
                 } else {
-                    $dfg = 5;
+                    $dfg = 3;
                     $this->ion_auth->register($username, $password, $email, $dfg);
                     $user_id = $this->db->insert_id();
                     $ion_user_id = $this->db->get_where('users_groups', array('id' => $user_id))->row()->user_id;

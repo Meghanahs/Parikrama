@@ -278,6 +278,7 @@ class Ion_auth_model extends CI_Model
 	{
 		if (empty($id) || empty($password))
 		{
+			echo"<script>console.log('inside  Empty password');</script>";
 			return FALSE;
 		}
 
@@ -293,6 +294,7 @@ class Ion_auth_model extends CI_Model
 
 		if ($query->num_rows() !== 1)
 		{
+			echo"<script>console.log('inside  No rows for password');</script>";
 			return FALSE;
 		}
 
@@ -301,9 +303,10 @@ class Ion_auth_model extends CI_Model
 		{
 			if ($this->bcrypt->verify($password,$hash_password_db->password))
 			{
+				echo"<script>console.log('inside bcrypt true');</script>";
 				return TRUE;
 			}
-
+echo"<script>console.log('inside bcrypt FALSE');</script>";
 			return FALSE;
 		}
 
@@ -2243,4 +2246,16 @@ class Ion_auth_model extends CI_Model
 		//just return the string IP address now for better compatibility
 		return $ip_address;
 	}
+	
+	function updateStudent($id, $data) {
+        $this->db->where('id', $id);
+        $this->db->update('student', $data);
+    }
+
+	function getGroupIdByUserId($user_id) {
+		$this->db->where('user_id', $user_id);
+        $query = $this->db->get('user_groups');
+        return $query->row();
+    }
+
 }

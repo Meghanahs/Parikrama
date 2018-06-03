@@ -11,14 +11,14 @@ class Auth extends CI_Controller {
 		/*	 $this->load->model('Signup_model');  */
 			
 			$this->load->library(array('ion_auth','form_validation'));
-			
+			$this->load->model('ion_auth_model');
 			$this->load->helper(array('url','language'));
 					$this->lang->load('system_syntax');
 
 			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 			$this->lang->load('auth');
-			
+			$this->join	= $this->config->item('join', 'ion_auth');
 		
 	}
 
@@ -68,7 +68,7 @@ echo "<script>console.log('Start index');</script>";
 			//check to see if the user is logging in
 			//check for "remember me"
 			$remember = (bool) $this->input->post('remember');
-
+			//$loginMessage = $this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember);
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember))
 			{
 				//if the login is successful
@@ -80,7 +80,7 @@ echo "<script>console.log('Start index');</script>";
 			{
 				//if the login was un-successful
 				//redirect them back to the login page
-				$this->session->set_flashdata('message', $this->ion_auth->errors());
+				$this->session->set_flashdata('message', $loginMessage);
 				redirect('auth/login', 'refresh'); //use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
@@ -104,23 +104,56 @@ echo "<script>console.log('Start index');</script>";
 		}
 	}
 	
+	
+	/* this method is used for only students registration   */
 	public function signup() {
-		 $teacherDetails=array(          
-                    'username' =>   $this->input->post('username'),
-                    'email' =>   $this->input->post('email'),
-                    'phone'=>  $this->input->post('phone'),
-                    'password' =>   md5($this->input->post('password'))
-                    
-                    /*'created_date' => date['y-m-d H-i-s']*/
+		$salt       = $this->ion_auth_model->store_salt ? $this->ion_auth_model->salt() : FALSE;
+		$password   = $this->ion_auth_model->hash_password($this->input->post('password'), $salt);
+		
+		 $teacherDetails=array( 
+						'id'			=> $user_id,
+						'username' 		=>   $this->input->post('username'),
+						'email' 		=>   $this->input->post('email'),
+						'phone'			=>  $this->input->post('phone'),
+						'password' 		=>  $password,
+						'created_on' 	=> time(),
+						'active'     	=> 0
                     );
-					 $this->db->insert("users",$teacherDetails);
+					
+									
+					$this->db->insert("users",$teacherDetails);
+					$student_user_id = $this->db->insert_id();
+					 
+					 $teachers=array(          
+						'name' =>   $this->input->post('username'),
+						'email' =>   $this->input->post('email'),
+						'phone'=>  $this->input->post('phone'),
+						'add_date' => time()
+						
+					);
+					
+					 $this->db->insert("student",$teachers);
+					 $student_id = $this->db->insert_id();
+					 
+					$this->db->insert("users_groups", array( $this->join['groups'] => 3, $this->join['users'] => (int)$student_user_id));
+						 
+						 $group_id = $this->db->insert_id();
+						 $group=array(          
+						'ion_user_id' =>   $group_id
+						
+						 );
+						 $this->ion_auth->updateStudent($student_id, $group);
+					
+					 
+				/* $this->ion_auth->add_to_group(3, $student_user_id);	 */
+					
+					
+					 
+					 
         echo "<script>console.log('teacher registered Successfully');</script>";
 		  $this->session->set_flashdata('feedback', 'Updated');
 		   redirect('auth/login', 'refresh');
-
-				/*	 $this->load->model('Signup_model');  
-					 $this->Signup_model->createTeacher($teacherDetails); */
-             /*$this->user_model->recruiterMail($this->input->post('name'),$this->input->post('email'),$reg);*/		
+	
 	}
 	
 /*
