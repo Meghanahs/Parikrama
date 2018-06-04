@@ -49,7 +49,7 @@
         <div class="innter-form">
         <form class="sa-innate-form" method="post" action="auth/login">
         <h2 class="login form-signin-heading">Parikrama</h2>
-      <div id="infoMessage"><?php echo $message;?></div>
+     <!-- <div id="infoMessage"><?php echo $message;?></div> -->
             <label>Email Address</label>
              <input type="text" class="form-control" name="identity" placeholder="<?php echo lang('useremail'); ?>" 
 autofocus>          
@@ -66,7 +66,7 @@ autofocus>
         <div id="sectionB" class="tab-pane fade">
 			<div class="innter-form">
         <!--  <form class="sa-innate-form" role="form" action="auth/signup" method="post" > -->
-			  <div id="infoMessage"><?php echo $message;?></div>
+		        <div id="infoMessage"><?php echo $message;?></div> 
              <label for="exampleInputEmail1"> <?php  echo lang('name'); ?></label>
                                             <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder="">
             <label for="exampleInputEmail1"> <?php  echo lang('email'); ?></label>

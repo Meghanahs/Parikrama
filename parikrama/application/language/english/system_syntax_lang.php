@@ -70,11 +70,6 @@ $lang['log_out'] = 'Log Out';
 $lang['dashboard'] = 'Dashboard';
 $lang['all_hospitals'] = 'Financial Activities';
 $lang['create_new_hospital'] = 'Settings';
-
-
-
-
-
 $lang['name'] = 'Name';
 $lang['description'] = 'Description';
 $lang['options'] = 'Options';
@@ -105,20 +100,16 @@ $lang['id'] = 'Id';
 $lang['date-time'] = 'Date - Time';
 $lang['remarks'] = 'Remarks';
 
-
-
-
-
 // Employee
 $lang['add_employee'] = 'Add Employee';
 $lang['edit_employee'] = 'Edit Employee';
 $lang['employee'] = 'Employee';
 
 // Student
-$lang['add_student'] = 'Add student';
-$lang['edit_student'] = 'Edit Student';
-$lang['student'] = 'Student';
-$lang['all_students'] = 'All Students';
+// $lang['add_student'] = 'Add Teacher';
+$lang['edit_student'] = 'Edit Teacher';
+$lang['Teachers'] = 'Teachers';
+$lang['all_students'] = 'All Teachers';
 
 // Instructor
 $lang['add_instructor'] = 'Add Instructor';

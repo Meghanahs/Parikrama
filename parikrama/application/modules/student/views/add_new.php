@@ -5,12 +5,12 @@
         <!-- page start-->
         <section class="panel">
             <header class="panel-heading">
-                <?php
+               <?php
                 if (!empty($student->id))
-                    echo '<i class="fa fa-edit"></i> '.lang('edit_student');
-                else
-                    echo '<i class="fa fa-plus-circle"></i> '.lang('add_student');
-                ?>
+                  echo '<i class="fa fa-edit"></i> '.lang('edit_student');
+                         else
+                  echo '<i class="fa fa-plus-circle"></i> '.lang('add_teachers');
+                ?> 
             </header>
             <div class="">
                 <div class="adv-table editable-table ">
@@ -76,8 +76,6 @@
                                             echo $student->id;
                                         }
                                         ?>'>
-
-
                                         <button type="submit" name="submit" class="btn btn-info"> <?php  echo lang('submit'); ?></button>
                                     </form>
 

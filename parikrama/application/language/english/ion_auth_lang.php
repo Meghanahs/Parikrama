@@ -44,11 +44,15 @@ $lang['login_unsuccessful_not_active'] 		 = 'Account is inactive';
 $lang['login_timeout']                       = 'Temporarily Locked Out.  Try again later.';
 $lang['logout_successful'] 		 	         = 'Logged Out Successfully';
 
+//signup /register
+$lang['Registration_successful']             = 'Registration Successfull and check your mail for activation link';
+$lang['Registration_failed']                 = 'Registrarion Failed';
+
 // Account Changes
 $lang['update_successful'] 		 	         = 'Account Information Successfully Updated';
 $lang['update_unsuccessful'] 		 	     = 'Unable to Update Account Information';
-$lang['delete_successful']               = 'User Deleted';
-$lang['delete_unsuccessful']           = 'Unable to Delete User';
+$lang['delete_successful']                   = 'User Deleted';
+$lang['delete_unsuccessful']                 = 'Unable to Delete User';
 
 // Groups
 $lang['group_creation_successful']  = 'Group created Successfully';

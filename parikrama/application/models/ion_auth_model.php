@@ -2257,5 +2257,41 @@ echo"<script>console.log('inside bcrypt FALSE');</script>";
         $query = $this->db->get('user_groups');
         return $query->row();
     }
+	
+	/* send mail after registration */
+	
+	    public function mail($name,$mail,$id){
+			
+	    echo "<script>console.log('mail function');</script>";
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'From:Parikrama <info@siddhrans.com>' . "\r\n";
+        $query1 =$this->db->query("SELECT * FROM users where email='$mail'");
+        $row=$query1->result_array();
+        if ($query1->num_rows()>0)
+
+            $mail_message='Dear '.$row[0]['username'].','."\r\n";
+            $mail_message.='Thanks for for registration,<br>'.' Click '.'
+            <a href='.base_url().'auth/verify?mail='.$mail.'&id='.$id.'">Here</a>'.' to Activate your account<br>';
+            $mail_message.='<br>Thanks & Regards';
+            $mail_message.='<br>Parikrama';
+            mail($mail,"Account activation ".$mail,$mail_message,$headers);
+         //   $this->load->view('success');
+    }
+	
+	   public function verify($name,$id){
+		    echo "<script>console.log('inside verify function');</script>";
+                  $q="select * from users where email='$name' and id='$id'";
+                  $confirm = $this->db->query($q); 
+                  $rows=$confirm->num_rows();
+                      if($rows>0){
+                         $q = "UPDATE users SET active='1' where mail='$name' and id='$id'";
+                         $this->db->query($q);
+                         $this->load->view('activationMsg');
+                                 }
+                         else {
+                      echo"unauthorized user";
+                          }
+                       }
 
 }

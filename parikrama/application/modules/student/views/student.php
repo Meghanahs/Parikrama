@@ -5,7 +5,7 @@
         <!-- page start-->
         <section class="panel">
             <header class="panel-heading">
-                <i class="fa fa-user"></i>  <?php  echo lang('student'); ?>
+                <i class="fa fa-user"></i>  <?php  echo lang('Teachers'); ?>
             </header>
              <style>
 
@@ -40,9 +40,9 @@
                      <div class="clearfix search_row">
                         <a data-toggle="modal" href="#myModal">
                             <div class="btn-group">
-                                <button class="btn btn-info">
+                            <!--    <button class="btn btn-info">
                                     <i class="fa fa-plus-circle"></i>  <?php echo lang('add_student'); ?>
-                                </button>
+                                </button>-->
                             </div>
                         </a>
                         <button class="export" onclick="javascript:window.print();">Print</button>  
@@ -207,7 +207,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title"><i class="fa fa-plus-circle"></i>  <?php  echo lang('add_student'); ?></h4>
+            <!--    <h4 class="modal-title"><i class="fa fa-plus-circle"></i>  <?php  echo lang('add_student'); ?></h4> -->
             </div>
             <div class="modal-body">
                 <form role="form" action="student/addNew" method="post" enctype="multipart/form-data">

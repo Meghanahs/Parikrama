@@ -234,11 +234,11 @@
                             <li class="sub-menu">
                                 <a href="javascript:;" >
                                     <i class="fa  fa-user"></i>
-                                    <span> <?php echo lang('students'); ?> </span>
+                                    <span> <?php echo lang('Teachers'); ?> </span>
                                 </a>
                                 <ul class="sub">
                                     <li><a  href="student"><i class="fa fa-users"></i> <?php echo lang('all_students'); ?> </a></li>
-                                    <li><a  href="student/addNewView"><i class="fa fa-plus-circle"></i> <?php echo lang('add_student'); ?> </a></li>
+                              <!--      <li><a  href="student/addNewView"><i class="fa fa-plus-circle"></i> <?php echo lang('add_student'); ?> </a></li> -->
                                 </ul>
                             </li>
                         <?php } ?>

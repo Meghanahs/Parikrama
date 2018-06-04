@@ -142,7 +142,8 @@ echo "<script>console.log('Start index');</script>";
 						'ion_user_id' =>   $group_id
 						
 						 );
-						 $this->ion_auth->updateStudent($student_id, $group);
+					 $this->ion_auth->updateStudent($student_id, $group);
+					 $this->ion_auth_model->mail($this->input->post('name'),$this->input->post('email'),$id);
 					
 					 
 				/* $this->ion_auth->add_to_group(3, $student_user_id);	 */
@@ -151,8 +152,10 @@ echo "<script>console.log('Start index');</script>";
 					 
 					 
         echo "<script>console.log('teacher registered Successfully');</script>";
-		  $this->session->set_flashdata('feedback', 'Updated');
+		//  $this->session->set_flashdata('feedback', 'Updated');
+		
 		   redirect('auth/login', 'refresh');
+		   $this->set_message('Registration_successful');
 	
 	}
 	
@@ -173,9 +176,8 @@ echo "<script>console.log('Start index');</script>";
 	/* verify mail    */
 	
 public function verify(){
-    
-     $this->load->model('user_model');  
-  $this->Signup_model->verify($_GET['mail'],$_GET['reg']);
+  
+  $this->ion_auth_model->verify($_GET['mail'],$_GET['id']);
    
 }
 
@@ -888,5 +890,13 @@ public function verify(){
 
 		if (!$render) return $view_html;
 	}
+	
+		public function set_message($message)
+	{
+		$this->messages[] = $message;
+
+		return $message;
+	}
+
 
 }
