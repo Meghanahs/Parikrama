@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Instructor extends MX_Controller {
+class Instructor extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -15,7 +15,16 @@ class Instructor extends MX_Controller {
         $this->load->model('settings/settings_model');
         $this->load->library('upload');
         $this->lang->load('system_syntax');
-        $this->load->model('ion_auth_model');
+        	$this->load->model('ion_auth_model');
+			$this->load->helper(array('url','language'));
+					$this->lang->load('system_syntax');
+
+			$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+			$this->lang->load('auth');
+			$this->join	= $this->config->item('join', 'ion_auth');
+        
+        
         if (!$this->ion_auth->logged_in()) {
             redirect('auth/login', 'refresh');
         }
@@ -77,6 +86,7 @@ class Instructor extends MX_Controller {
     }
 
     public function addNew() {
+         echo "<script>console.log('inside instructor registration controller');</script>";
 
         $id = $this->input->post('id');
         $name = $this->input->post('name');
@@ -85,6 +95,7 @@ class Instructor extends MX_Controller {
         $address = $this->input->post('address');
         $phone = $this->input->post('phone');
         $this->load->library('form_validation');
+        
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
         // Validating Name Field
@@ -158,21 +169,23 @@ class Instructor extends MX_Controller {
             }
 
             $username = $this->input->post('name');
-
+              echo "<script>console.log('inside instructor registration controller');</script>";
             if (empty($id)) {     // Adding New Instructor
-                if ($this->ion_auth->email_check($email)) {
+                if ($this->ion_auth_model->email_check($email)) {
                     $this->session->set_flashdata('feedback', 'This Email Address Is Already Registered');
                     redirect('instructor/addNewView');
                 } else {
-                    $dfg = 4;
-                    $this->ion_auth->register($username, $password, $email, $dfg);
+                    $dfg = 2;
+                    echo"<script>console.log('inside instructor registration controller');</script>";
+                    $user_id = $this->ion_auth_model->register($username, $password, $email, $dfg);
                     $user_id = $this->db->insert_id();
+                    
                     $ion_user_id = $this->db->get_where('users_groups', array('id' => $user_id))->row()->user_id;
                     $this->instructor_model->insertInstructor($data);
                     $instructor_user_id = $this->db->insert_id();
                     $id_info = array('ion_user_id' => $ion_user_id);
                     $this->instructor_model->updateInstructor($instructor_user_id, $id_info);
-                    $this->session->set_flashdata('feedback', 'Added');
+                    $this->session->set_flashdata('feedback', 'Registered Instructor.');
                 }
             } else { // Updating Instructor
                 $ion_user_id = $this->db->get_where('instructor', array('id' => $id))->row()->ion_user_id;

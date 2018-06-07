@@ -51,9 +51,9 @@ $active_record = TRUE;
 
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'parikrama';
+$db['default']['username'] = 'aimtech1_sid2';
+$db['default']['password'] = '9420topgun';
+$db['default']['database'] = 'aimtech1_tr';
 
 
 

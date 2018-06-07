@@ -85,6 +85,7 @@ class Batch_model extends CI_model {
     
     function getStudentsNumberByBatchId($batch_id) {
         $this->db->where('batch', $batch_id);
+        $this->db->query("SELECT * FROM student_batch");
         $student_batchs = $this->db->get('student_batch')->result();
         $expected_students = array();
         $i = 0;

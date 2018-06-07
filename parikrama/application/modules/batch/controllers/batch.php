@@ -162,6 +162,7 @@ class Batch extends MX_Controller {
 
         $batch_id = $this->input->get('batch_id');
         $data['students'] = $this->batch_model->getStudentsByBatchId($batch_id);
+        $data['allStudents'] = $this->student_model->getStudent();
         $data['settings'] = $this->settings_model->getSettings();
         $data['batch_id'] = $batch_id;
         $this->load->view('home/dashboard', $data); // just the header file

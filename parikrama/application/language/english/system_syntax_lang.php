@@ -116,6 +116,8 @@ $lang['add_instructor'] = 'Add Instructor';
 $lang['edit_instructor'] = 'Edit Instructor';
 $lang['instructor'] = 'Instructor';
 $lang['all_instructors'] = 'All Instructors';
+$lang['my_batch'] = 'MY Batch';
+$lang['student_list'] = 'Student List';
 
 // Course
 $lang['add_course'] = 'Add Course';
@@ -302,7 +304,7 @@ $lang['report_for_task'] = 'Report To Do';
 $lang['done_tasks'] = 'Done Tasks';
 $lang['see_all_students'] = 'See All Students';
 
-$lang['add_student_to_this_batch'] = 'Add Student To This Batch';
+$lang['add_teacher_to_this_batch'] = 'Add Teacher To This Batch';
 $lang['batch_details'] = 'Batch Details';
 $lang['course_name'] = 'Course Name';
 $lang['batch_id'] = 'Batch Id';

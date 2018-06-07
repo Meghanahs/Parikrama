@@ -59,9 +59,11 @@
                             <p>Search Result For <?php echo $key; ?></p>
                         <?php } ?>
                     </div>
+                    <form action="student/assignBatch" method="POST">
                     <table class="table table-striped table-hover table-bordered" id="">
                         <thead>
                             <tr>
+                                <th> Select</th>
                                 <th> <?php  echo lang('image'); ?></th>
                                 <th> <?php  echo lang('name'); ?></th>
                                 <th> <?php  echo lang('email'); ?></th>
@@ -84,6 +86,7 @@
                         </style>
                         <?php foreach ($students as $student) { ?>
                             <tr class="">
+                                <td style="width:10%;"><input type="checkbox" value="<?php echo $student->id; ?>" name="studentIds[]"> </input></td>
                                 <td style="width:10%;"><img style="width:95%;" src="<?php echo $student->img_url; ?>"></td>
                                 <td> <?php echo $student->name; ?></td>
                                 <td><?php echo $student->email; ?></td>
@@ -91,13 +94,15 @@
                                 <td><?php echo $student->phone; ?></td>
                                 <td>
                                       <a class="btn btn-info btn-xs btn_width" href="student/details?student_id=<?php echo $student->id; ?>"><i class=""> </i> <?php echo lang('details'); ?></a>
-                                    <button type="button" class="btn btn-info btn-xs btn_width editbutton" data-toggle="modal" data-id="<?php echo $student->id; ?>"><i class="fa fa-edit"></i> <?php  echo lang('edit'); ?></button>   
+                                    
                                     <a class="btn btn-info btn-xs btn_width delete_button" href="student/delete?id=<?php echo $student->id; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-trash-o"> </i> <?php  echo lang('delete'); ?></a>
                                 </td>
                             </tr>
                         <?php } ?>
                         </tbody>
                     </table>
+                    
+                    
                       <?php if (empty($key)) { ?>
 
                         <div class="row">
@@ -189,6 +194,16 @@
                             </div>
                         </div>
                     <?php } ?>
+                    <div>
+                        <select class="form-control" name="batchId" value='' style="width: 40%;"> 
+                        <?php foreach ($batches as $batch) { ?>
+                            <option label="<?php echo $batch->batch_id; ?>"><?php echo $batch->batch_id; ?></option>
+                        <?php } ?>
+                        </select>
+                        <input type="submit" value ="Assign Batch"/>
+                        
+                </form>        
+                    </div>
                 </div>
             </div>
         </section>

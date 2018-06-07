@@ -4,9 +4,7 @@
         <base href="<?php echo base_url(); ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="Rizvi">
-        <meta name="keyword" content="Php, Training, Coaching, Management, Software, Php, CodeIgniter, wake Up, Accounting">
+      
         <link rel="shortcut icon" href="uploads/favicon.png">
         <title><?php echo $this->router->fetch_class(); ?> | <?php echo $this->db->get("settings")->row()->system_vendor; ?></title>
         <!-- Bootstrap core CSS -->
@@ -255,19 +253,32 @@
                                 </ul>
                             </li>
                         <?php } ?>
-
-                        <?php if ($this->ion_auth->in_group(array('admin'))) { ?>
+                        
+                         <?php if ($this->ion_auth->in_group(array( 'Instructor'))) { ?>
                             <li class="sub-menu">
                                 <a href="javascript:;" >
-                                    <i class="fa  fa-user"></i>
-                                    <span> <?php echo lang('employees'); ?> </span>
+                                    <i class="fa  fa-check"></i>
+                                    <span> <?php echo lang('my_batch'); ?> </span>
                                 </a>
+                                <ul class="sub">
+                                    <li><a  href="student/mybatch"><i class="fa fa-users"></i> <?php echo lang('student_list'); ?> </a></li>
+        
+                                </ul>
+                            </li>
+                        <?php } ?>
+
+                <!--      <?php if ($this->ion_auth->in_group(array('admin'))) { ?>
+                         <li class="sub-menu">
+                             <a href="javascript:;" >
+                                   <i class="fa  fa-user"></i>
+                                <span> <?php echo lang('employees'); ?> </span> 
+                                </a> 
                                 <ul class="sub">
                                     <li><a  href="employee"><i class="fa fa-users"></i> <?php echo lang('employees'); ?> </a></li>
                                     <li><a  href="employee/addNewView"><i class="fa fa-plus-circle"></i> <?php echo lang('add_employee'); ?> </a></li>
                                 </ul>
                             </li>
-                        <?php } ?>
+                        <?php } ?> -->
 
 
 
@@ -299,6 +310,9 @@
                                 </ul>
                             </li>
                         <?php } ?>
+                        
+                        
+                           
 
 
 

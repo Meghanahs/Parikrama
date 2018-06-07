@@ -107,7 +107,7 @@
                                 <td class="center"><?php echo date($date_format, $batch->start_date); ?></td>
                                 <td><?php echo date($date_format, $batch->end_date); ?></td>
 
-                                <td><span class="student_number"><?php echo $this->batch_model->getStudentsNumberByBatchId($batch->id); ?> </span></td>
+                                <td><span class="student_number"><?php echo $this->batch_model->getStudentsNumberByBatchId($batch->batch_id); ?> </span></td>
                                 <td>
                                     <?php
                                     if (time() < $batch->start_date) {
@@ -122,7 +122,7 @@
                                     ?>
                                 </td>
                                 <td class="no-print">
-                                    <a class="btn btn-info btn-xs btn_width" href="batch/students?batch_id=<?php echo $batch->id; ?>"><i class=""> </i> <?php echo lang('batch_details'); ?></a>
+                                    <a class="btn btn-info btn-xs btn_width" href="batch/students?batch_id=<?php echo $batch->batch_id; ?>"><i class=""> </i> <?php echo lang('batch_details'); ?></a>
                                     <button type="button" class="btn btn-info btn-xs btn_width editbutton" data-toggle="modal" data-id="<?php echo $batch->id; ?>"><i class="fa fa-edit"></i> <?php echo lang('edit'); ?></button>   
                                     <?php if ($this->ion_auth->in_group('admin')) { ?> 
                                         <a class="btn btn-info btn-xs btn_width delete_button" href="batch/delete?id=<?php echo $batch->id; ?>" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-trash-o"> </i> <?php echo lang('delete'); ?></a>

@@ -849,7 +849,9 @@ echo"<script>console.log('inside bcrypt FALSE');</script>";
 	 * @author Mathew
 	 **/
 	public function register($username, $password, $email, $dfg, $additional_data = array(), $groups = array())
+
 	{
+	    	 echo "<script>console.log('inside register ion_auth_model');</script>";
 		$this->trigger_events('pre_register');
 
 		$manual_activation = $this->config->item('manual_activation', 'ion_auth');
@@ -859,7 +861,7 @@ echo"<script>console.log('inside bcrypt FALSE');</script>";
 			$this->set_error('account_creation_duplicate_email');
 			return FALSE;
 		}
-		elseif ($this->identity_column == 'username' && $this->username_check($username))
+		elseif (($this->identity_column == 'username' || $this->identity_column == 'name') && $this->username_check($username))
 		{
 			$this->set_error('account_creation_duplicate_username');
 			return FALSE;
@@ -2260,7 +2262,7 @@ echo"<script>console.log('inside bcrypt FALSE');</script>";
 	
 	/* send mail after registration */
 	
-	    public function mail($name,$mail,$id){
+	    public function mail($name,$mail){
 			
 	    echo "<script>console.log('mail function');</script>";
         $headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -2272,11 +2274,11 @@ echo"<script>console.log('inside bcrypt FALSE');</script>";
 
             $mail_message='Dear '.$row[0]['username'].','."\r\n";
             $mail_message.='Thanks for for registration,<br>'.' Click '.'
-            <a href='.base_url().'auth/verify?mail='.$mail.'&id='.$id.'">Here</a>'.' to Activate your account<br>';
+            <a href='.base_url().'auth/verify?mail='.$mail.'&id='.$row[0]['id'].'>Here</a>'.' to Activate your account<br>';
             $mail_message.='<br>Thanks & Regards';
             $mail_message.='<br>Parikrama';
             mail($mail,"Account activation ".$mail,$mail_message,$headers);
-         //   $this->load->view('success');
+            
     }
 	
 	   public function verify($name,$id){
@@ -2285,13 +2287,53 @@ echo"<script>console.log('inside bcrypt FALSE');</script>";
                   $confirm = $this->db->query($q); 
                   $rows=$confirm->num_rows();
                       if($rows>0){
-                         $q = "UPDATE users SET active='1' where mail='$name' and id='$id'";
+                         $q = "UPDATE users SET active='1' where email='$name' and id='$id'";
                          $this->db->query($q);
-                         $this->load->view('activationMsg');
+                       //  $this->load->view('activationMsg');
+                        $this->load->view('auth/success'); 
+                     //   redirect('auth/login', 'refresh');
                                  }
                          else {
                       echo"unauthorized user";
                           }
                        }
+    /* password reset */  
+    
+    /* public function resetpassword($email) {
+               $this->db->select('email');
+               $this->db->from('users');
+               $this->db->where('email', $email);
+               $query=$this->db->get();
+      return $query->row_array();
+         
+     }
+     
+         public function mail($mail) {
+             $headers  = 'MIME-Version: 1.0' . "\r\n";
+             $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+             $headers .= 'From:Parikrama <info@siddhrans.com>' . "\r\n";
+             $query1 =$this->db->query("SELECT * FROM users where email='$mail'");
+             $row=$query1->result_array();
+                if ($query1->num_rows()>0) {
+        
+                 $mail_message='Dear '.$row[0]['username'].','. "\r\n";
+                 $mail_message.='Thanks for contacting regarding forgot password,<br>'.' Click '.'
+                 <a href='.base_url().'Forgotpassword/changePassword?mail=$mail>Here</a> to reset your password<br>';
+    
+                 $mail_message.='<br>Thanks & Regards';
+                 $mail_message.='<br>Parikrama';
+                  mail($mail,"Password Reset Request ".$mail,$mail_message,$headers);
+                   $this->load->view('auth/changePasswordMsg');
+        }
+    }
+    
+       public function updatePassword($email, $password) {
+           echo "<script>console.log('Email '.$email)</script>";
+           echo "<script>console.log('Password '.$password)</script>";
+           $passwordEncrypted = md5($password);
+           echo "<script>console.log('Password after Encryption '.$passwordEncrypted)</script>";
+             $q = "UPDATE users SET password='$passwordEncrypted' where mmail='$email'";
+          $this->db->query($q);
+    }*/
 
 }

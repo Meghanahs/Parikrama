@@ -35,6 +35,7 @@ class Student extends MX_Controller {
             $page_number = 0;
         }
         $data['students'] = $this->student_model->getStudentByPageNumber($page_number);
+        $data['batches'] = $this->batch_model->getBatch();
         $data['settings'] = $this->settings_model->getSettings();
         $data['pagee_number'] = $page_number;
         $data['p_n'] = '0';
@@ -71,6 +72,22 @@ class Student extends MX_Controller {
         $this->load->view('home/dashboard', $data); // just the header file
         $this->load->view('student', $data);
         $this->load->view('home/footer'); // just the header file
+    }
+    
+    public function assignBatch() {
+        $studentIds = $this->input->post('studentIds');
+        $batchId = $this->input->post('batchId');
+        foreach ($studentIds as $student) {
+            $data = array(
+                'batch' => $batchId,
+                'student' => $student,
+            );
+            $this->batch_model->insertStudentToBatch($data);
+        }
+        $this->load->view('home/dashboard', $data); // just the header file
+        
+        $this->load->view('home/footer'); // just the header file
+        redirect('student');
     }
 
     public function addNewView() {

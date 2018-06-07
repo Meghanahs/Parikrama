@@ -82,7 +82,7 @@
                         <a data-toggle="modal" href="#myModal">
                             <div class="btn-group">
                                 <button class="btn green">
-                                    <i class="fa fa-plus-circle"></i>  <?php echo lang('add_student_to_this_batch'); ?>
+                                    <i class="fa fa-plus-circle"></i>  <?php echo lang('add_teacher_to_this_batch'); ?>
                                 </button>
                             </div>
                         </a>
@@ -98,7 +98,7 @@
                     <table class="table table-striped table-hover table-bordered" id="">
                         <thead>
                             <tr>
-                                <th> <?php echo lang('image'); ?></th>
+                                <!--<th> <?php echo lang('image'); ?></th>-->
                                 <th> <?php echo lang('name'); ?></th>
                                 <th> <?php echo lang('email'); ?></th>
                                 <th> <?php echo lang('address'); ?></th>
@@ -124,7 +124,7 @@
                             $student = $this->student_model->getStudentById($value)
                             ?>
                             <tr class="">
-                                <td style="width:10%;"><img style="width:95%;" src="<?php echo $student->img_url; ?>"></td>
+                               <!-- <td style="width:10%;"><img style="width:95%;" src="<?php echo $student->img_url; ?>"></td>-->
                                 <td> <?php echo $student->name; ?></td>
                                 <td><?php echo $student->email; ?></td>
                                 <td class="center"><?php echo $student->address; ?></td>
@@ -161,13 +161,18 @@
             </div>
             <div class="modal-body">
                 <form role="form" action="batch/addStudentToBatch" method="post" enctype="multipart/form-data">
-                     <div class="form-group">
+                    <!-- <div class="form-group">
                     <input type="text" name="search-students" class="search-students" placeholder=" <?php echo lang('search_student')?>">
-                    </div>
+                    </div>-->
 
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php echo lang('student'); ?> <?php echo lang('name'); ?></label>
-                        <select name="student" class="form-control ajaxoption"></select>
+                        <select name="student" class="form-control ajaxoption">
+                            <?php foreach ($allStudents as $student) { ?>
+                                <option value="<?php echo $student->id; ?>"> <?php echo $student->name; ?></option>
+                            <?php } ?>
+                            
+                        </select>
                     </div>
 
                     <input type="hidden" name="batch_id" value="<?php echo $batch_id; ?>">

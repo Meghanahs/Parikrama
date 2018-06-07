@@ -212,23 +212,23 @@
                 <form role="form" action="instructor/addNew" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('name'); ?></label>
-                        <input type="text" class="form-control" name="name" id="exampleInputEmail1" value=''>
+                        <input type="text" class="form-control" name="name" id="name" value=''>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('email'); ?></label>
-                        <input type="text" class="form-control" name="email" id="exampleInputEmail1" value='' placeholder="">
+                        <input type="text" class="form-control" name="email" id="email" value='' placeholder="">
                     </div>
                      <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('password'); ?></label>
-                        <input type="password" class="form-control" name="password" id="exampleInputEmail1" placeholder="">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('address'); ?></label>
-                        <input type="text" class="form-control" name="address" id="exampleInputEmail1" value='' placeholder="">
+                        <input type="text" class="form-control" name="address" id="address" value='' placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('phone'); ?></label>
-                        <input type="text" class="form-control" name="phone" id="exampleInputEmail1" value='' placeholder="">
+                        <input type="text" class="form-control" name="phone" id="phone" value='' placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('image'); ?></label>
@@ -267,27 +267,27 @@
 
 
                         <label for="exampleInputEmail1"> <?php  echo lang('name'); ?></label>
-                        <input type="text" class="form-control" name="name" id="exampleInputEmail1" value='' placeholder="">
+                        <input type="text" class="form-control" name="name" id="nameE" value='' placeholder="">
 
                     </div>
                     <div class="form-group">
 
 
                         <label for="exampleInputEmail1"> <?php  echo lang('password'); ?></label>
-                        <input type="password" class="form-control" name="password" id="exampleInputEmail1" placeholder="********">
+                        <input type="password" class="form-control" name="password" id="passwordE" placeholder="********">
 
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('email'); ?></label>
-                        <input type="text" class="form-control" name="email" id="exampleInputEmail1" value='' placeholder="">
+                        <input type="text" class="form-control" name="email" id="emailE" value='' placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('address'); ?></label>
-                        <input type="text" class="form-control" name="address" id="exampleInputEmail1" value='' placeholder="">
+                        <input type="text" class="form-control" name="address" id="addressE" value='' placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('phone'); ?></label>
-                        <input type="text" class="form-control" name="phone" id="exampleInputEmail1" value='' placeholder="">
+                        <input type="text" class="form-control" name="phone" id="phoneE" value='' placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1"> <?php  echo lang('image'); ?></label>

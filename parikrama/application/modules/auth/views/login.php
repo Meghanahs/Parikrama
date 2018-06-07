@@ -89,7 +89,7 @@ autofocus>
      <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
               <div class="modal-dialog">
                   <div class="modal-content">
-                      <form method="post" action="auth/forgot_password">
+                      <form method="post" action="auth/password">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 <h4 class="modal-title"><?php echo lang('forgot_password'); ?></h4>

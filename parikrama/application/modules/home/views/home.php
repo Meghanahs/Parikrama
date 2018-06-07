@@ -287,7 +287,7 @@
 
 
 
-                    <div class="col-md-6">         
+               <!--     <div class="col-md-6">         
                         <div class="panel-heading"> <?php echo lang('latest_expense'); ?></div>
                         <table class="table table-striped table-hover table-bordered" id="">
                             <thead>
@@ -326,7 +326,7 @@
                             ?>
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
 
 
 
@@ -377,7 +377,7 @@
                 </div> -->
 
 
-                <?php if ($this->ion_auth->in_group(array('Instructor', 'Employee'))) { ?>
+            <!--    <?php if ($this->ion_auth->in_group(array('Instructor', 'Employee'))) { ?>
                     <div class="col-md-6">  
                         <aside class="">
                             <div class="panel-heading"> <?php echo lang('employee'); ?> <?php echo lang('attendence'); ?></div>
@@ -417,7 +417,7 @@
                             </section>
                         </aside>
                     </div>
-                <?php } ?>
+                <?php } ?>->
 
 
             <!-- 

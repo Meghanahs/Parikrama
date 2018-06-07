@@ -117,6 +117,7 @@ echo "<script>console.log('Start index');</script>";
 						'phone'			=>  $this->input->post('phone'),
 						'password' 		=>  $password,
 						'created_on' 	=> time(),
+						
 						'active'     	=> 0
                     );
 					
@@ -143,7 +144,8 @@ echo "<script>console.log('Start index');</script>";
 						
 						 );
 					 $this->ion_auth->updateStudent($student_id, $group);
-					 $this->ion_auth_model->mail($this->input->post('name'),$this->input->post('email'),$id);
+					 
+					 $this->ion_auth_model->mail($this->input->post('name'),$this->input->post('email'));
 					
 					 
 				/* $this->ion_auth->add_to_group(3, $student_user_id);	 */
@@ -154,7 +156,8 @@ echo "<script>console.log('Start index');</script>";
         echo "<script>console.log('teacher registered Successfully');</script>";
 		//  $this->session->set_flashdata('feedback', 'Updated');
 		
-		   redirect('auth/login', 'refresh');
+		  /* redirect('auth/login', 'refresh');*/
+		  $this->load->view('auth/activation');
 		   $this->set_message('Registration_successful');
 	
 	}
@@ -897,6 +900,27 @@ public function verify(){
 
 		return $message;
 	}
+	
+	/* reset password */
+/*	   public function password()
+   {
+          $email = $this->input->post('email');
+          $findemail = $this->ion_auth_model->resetpassword($email);
+              if ($findemail) {
+                    $this->ion_auth_model->mail($findemail['mail']);
+                      } else {
+                     echo "<script>alert(' $email not found, please enter correct email id')</script>";
+                      redirect('auth/login', 'refresh');
+                    }
+   }
+   
+      public function changePasswordAction() {
+        $password = $this->input->post('password');
+        $email = $this->input->post('email');
+        $this->ion_auth_model->updatePassword($email, $password);
+        redirect('auth/login', 'refresh');
+       
+   }*/
 
 
 }

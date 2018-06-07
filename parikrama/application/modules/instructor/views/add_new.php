@@ -30,7 +30,7 @@
 
 
                                             <label for="exampleInputEmail1"> <?php  echo lang('name'); ?></label>
-                                            <input type="text" class="form-control" name="name" id="exampleInputEmail1" value='<?php
+                                            <input type="text" class="form-control" name="name" id="name" value='<?php
                                             if (!empty($instructor->name)) {
                                                 echo $instructor->name;
                                             }
@@ -40,7 +40,7 @@
                                         
                                         <div class="form-group">
                                             <label for="exampleInputEmail1"> <?php  echo lang('email'); ?></label>
-                                            <input type="text" class="form-control" name="email" id="exampleInputEmail1" value='<?php
+                                            <input type="text" class="form-control" name="email" id="email" value='<?php
                                             if (!empty($instructor->email)) {
                                                 echo $instructor->email;
                                             }
@@ -48,11 +48,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1"> <?php  echo lang('password'); ?></label>
-                                            <input type="password" class="form-control" name="password" id="exampleInputEmail1" placeholder="">
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1"> <?php  echo lang('address'); ?></label>
-                                            <input type="text" class="form-control" name="address" id="exampleInputEmail1" value='<?php
+                                            <input type="text" class="form-control" name="address" id="address" value='<?php
                                             if (!empty($instructor->address)) {
                                                 echo $instructor->address;
                                             }
@@ -60,7 +60,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1"> <?php  echo lang('phone'); ?></label>
-                                            <input type="text" class="form-control" name="phone" id="exampleInputEmail1" value='<?php
+                                            <input type="text" class="form-control" name="phone" id="phone" value='<?php
                                             if (!empty($instructor->phone)) {
                                                 echo $instructor->phone;
                                             }
